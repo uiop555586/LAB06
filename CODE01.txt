@@ -1,0 +1,159 @@
+int speakerPin = 11;  //設定無源蜂鳴器使用的Pin腳
+
+int t1_8 = 60;        // 8分音符(1/8拍時間長度)，單位 毫秒 ms
+int t1_4 = t1_8 * 2;  // 4分音符(1/4拍時間長度)
+int t1_2 = t1_8 * 4;  // 2分音符(半拍時間長度)
+int t1_1 = t1_8 * 8;  // 全音符(一拍時間長度)
+
+int t_pause = 10; // 設定音符之間，斷音的時間長，單位 毫秒 ms
+
+void setup() {
+  pinMode(speakerPin, OUTPUT);
+}
+
+void loop() {
+  //依照簡譜的順序，填入代表的音符 C, D, E, F, G, A, B
+  //例如C(1,300)，代表低音C演奏時間為300毫秒，C(2,100)，代表中音C演奏時間為100毫秒，
+  //生日快樂歌
+  G(1, t1_2); G(1, t1_2); A(1, t1_1); G(1, t1_1); C(2, t1_1); B(1, t1_1 * 2);
+  G(1, t1_2); G(1, t1_2); A(1, t1_1); G(1, t1_1); D(2, t1_1); C(2, t1_1 * 2);
+  G(1, t1_2); G(1, t1_2); G(2, t1_1); E(2, t1_1); C(2, t1_1); B(1, t1_1); A(1, t1_1);
+  Fn(2, t1_2+t1_4); Fn(2, t1_4); E(2, t1_1); C(2, t1_1); D(2, t1_1); C(2, t1_1 * 2);
+ //生日快樂歌-結束
+ 
+  delay(1000);
+}
+
+void C(unsigned int pitch, unsigned long duration)
+{
+  int f = 261;
+  switch (pitch) {
+    case 1:
+      tone(speakerPin, f, duration);
+      break;
+    case 2:
+      tone(speakerPin, f * 2, duration);
+      break;
+    case 3:
+    default:
+      tone(speakerPin, f * 4, duration);
+  }
+  delay(duration);
+  noTone(speakerPin);
+  delay(t_pause);
+}
+
+void D(unsigned int pitch, unsigned long duration)
+{
+  int f = 294;
+  switch (pitch) {
+    case 1:
+      tone(speakerPin, f, duration);
+      break;
+    case 2:
+      tone(speakerPin, f * 2, duration);
+      break;
+    case 3:
+    default:
+      tone(speakerPin, f * 4, duration);
+  }
+  delay(duration);
+  noTone(speakerPin);
+  delay(t_pause);
+}
+
+void E(unsigned int pitch, unsigned long duration)
+{
+  int f = 330;
+  switch (pitch) {
+    case 1:
+      tone(speakerPin, f, duration);
+      break;
+    case 2:
+      tone(speakerPin, f * 2, duration);
+      break;
+    case 3:
+    default:
+      tone(speakerPin, f * 4, duration);
+  }
+  delay(duration);
+  noTone(speakerPin);
+  delay(t_pause);
+}
+
+//不知為何函數名稱不能用F，所以改用Fn
+void Fn(unsigned int pitch, unsigned long duration)
+{
+  int f = 349;
+  switch (pitch) {
+    case 1:
+      tone(speakerPin, f, duration);
+      break;
+    case 2:
+      tone(speakerPin, f * 2, duration);
+      break;
+    case 3:
+    default:
+      tone(speakerPin, f * 4, duration);
+  }
+  delay(duration);
+  noTone(speakerPin);
+  delay(t_pause);
+}
+
+void G(unsigned int pitch, unsigned long duration)
+{
+  int f = 392;
+  switch (pitch) {
+    case 1:
+      tone(speakerPin, f, duration);
+      break;
+    case 2:
+      tone(speakerPin, f * 2, duration);
+      break;
+    case 3:
+    default:
+      tone(speakerPin, f * 4, duration);
+  }
+  delay(duration);
+  noTone(speakerPin);
+  delay(t_pause);
+}
+
+void A(unsigned int pitch, unsigned long duration)
+{
+  int f = 440;
+  switch (pitch) {
+    case 1:
+      tone(speakerPin, f, duration);
+      break;
+    case 2:
+      tone(speakerPin, f * 2, duration);
+      break;
+    case 3:
+    default:
+      tone(speakerPin, f * 4, duration);
+  }
+  delay(duration);
+  noTone(speakerPin);
+  delay(t_pause);
+}
+
+void B(unsigned int pitch, unsigned long duration)
+{
+  int f = 494;
+  switch (pitch) {
+    case 1:
+      tone(speakerPin, f, duration);
+      break;
+    case 2:
+      tone(speakerPin, f * 2, duration);
+      break;
+    case 3:
+    default:
+      tone(speakerPin, f * 4, duration);
+  }
+  delay(duration);
+  noTone(speakerPin);
+  delay(t_pause);
+}
